@@ -1,10 +1,11 @@
 var Firebase = require("firebase");
-var require('colors');
+var colors = require('colors');
 
 var myFirebaseRef = new Firebase("https://bikestand.firebaseio.com/");
 
 myFirebaseRef.on("value", function(snapshot) {
-  console.log(snapshot.val());
+    var snapshot = snapshot.val();
+    console.log(snapshot);
 });
 
 
