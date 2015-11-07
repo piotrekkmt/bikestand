@@ -21,11 +21,11 @@ button.watch(function(err, state) {
   // 1 == pressed, 0 == not pressed
   if(state == 1) {
     // turn LED on
-    myFirebaseRef.child('bay1').set("false");
+    myFirebaseRef.child('bay1').set(false);
     led.writeSync(1);
   } else {
     // turn LED off
-    myFirebaseRef.child('bay1').set("false");
+    myFirebaseRef.child('bay1').set(true);
     led.writeSync(0);
   }
 });
