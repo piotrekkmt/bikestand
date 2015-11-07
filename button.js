@@ -5,6 +5,9 @@ var GpioStream = require('gpio-stream'),
 
 // pipe the button presses to stdout
 //button.pipe(process.stdout);
+
+console.log("Let the Light show begin!");
+
 var stream = button.pipe(led);
 stream.pipe(process.stdout);
 
