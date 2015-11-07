@@ -1,29 +1,33 @@
-/*eslint-env node*/
+var Firebase = require("firebase");
+var require('colors');
 
-//------------------------------------------------------------------------------
-// node.js starter application for Bluemix
-//------------------------------------------------------------------------------
+var myFirebaseRef = new Firebase("https://bikestand.firebaseio.com/");
 
-// This application uses express as its web server
-// for more info, see: http://expressjs.com
-var express = require('express');
-
-// cfenv provides access to your Cloud Foundry environment
-// for more info, see: https://www.npmjs.com/package/cfenv
-var cfenv = require('cfenv');
-
-// create a new express server
-var app = express();
-
-// serve the files out of ./public as our main files
-app.use(express.static(__dirname + '/public'));
-
-// get the app environment from Cloud Foundry
-var appEnv = cfenv.getAppEnv();
-
-// start server on the specified port and binding host
-app.listen(appEnv.port, '0.0.0.0', function() {
-
-	// print a message when the server starts listening
-  console.log("server starting on " + appEnv.url);
+myFirebaseRef.on("value", function(snapshot) {
+  console.log(snapshot.val());
 });
+
+
+//// button is attaced to pin 17, led to 18
+//var GPIO = require('onoff').Gpio,
+//    led = new GPIO(18, 'out'),
+//    button = new GPIO(17, 'in', 'both');
+// 
+//// define the callback function
+//function light(err, state) {
+//  
+//  // check the state of the button
+//  // 1 == pressed, 0 == not pressed
+//  if(state == 1) {
+//    // turn LED on
+//    led.writeSync(1);
+//  } else {
+//    // turn LED off
+//    led.writeSync(0);
+//  }
+//  
+//}
+// 
+//// pass the callback function to the
+//// as the first argument to watch()
+//button.watch(light);
