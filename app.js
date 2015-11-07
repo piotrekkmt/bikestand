@@ -2,11 +2,23 @@ var Firebase = require("firebase");
 var colors = require('colors');
 
 var myFirebaseRef = new Firebase("https://bikestand.firebaseio.com/");
+var bay1; 
 
 myFirebaseRef.on("value", function(snapshot) {
-    var snapshot = snapshot.val();
-    console.log(snapshot);
+    
+    console.log(snapshot.val());
+    bay1 = snapshot.val().bay1;
 });
+
+var bay1New;
+
+while(true){
+    if(bay1New !== bay1){
+        bay1 = bay1New;
+        myFirebaseRef.child('bay1').set(bay1New);
+    }
+}
+
 
 
 //// button is attaced to pin 17, led to 18
